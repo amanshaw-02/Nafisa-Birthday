@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#190d25"><title>For Nafisa, with love 💗</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow-x:hidden;font-family:Georgia,"Times New Roman",serif;color:#fff4f7;background:radial-gradient(ellipse at 50% 0%,#542345,#28152f 45%,#100d20);display:grid;place-items:center}
+#stars,.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}.star{position:absolute;color:#ffe3ee;opacity:.25;animation:twinkle 3s ease-in-out infinite}@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:.9;transform:scale(1.25)}}
+.glow{position:fixed;width:70vw;height:70vw;max-width:650px;max-height:650px;border-radius:50%;background:#f35b9a;filter:blur(130px);opacity:.13;pointer-events:none}
+main{position:relative;z-index:2;width:min(92%,700px);padding:28px 0;text-align:center}.panel{padding:clamp(26px,6vw,54px) clamp(20px,6vw,54px);border:1px solid #ffb8cb55;border-radius:30px;background:linear-gradient(145deg,#ffffff12,#ffffff06);box-shadow:0 20px 90px #0006;backdrop-filter:blur(10px)}
+.kicker{font:600 .78rem system-ui,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#ffc2d5}h1{font-size:clamp(2.7rem,10vw,5.4rem);line-height:1.02;margin:18px 0;color:#ffd8e5;text-shadow:0 0 35px #ff8db566}
+p{font-size:clamp(1.05rem,3.5vw,1.25rem);line-height:1.8;color:#ffedf3}button{font:600 1rem system-ui,sans-serif;border:1px solid #ffd3e2;border-radius:999px;padding:15px 25px;color:#57233e;background:linear-gradient(120deg,#ffe0eb,#ff9fc1);box-shadow:0 8px 28px #ff6ca044;cursor:pointer;transition:.2s}button:hover{transform:translateY(-3px)}
+.gift{font-size:6rem;display:block;margin:8px auto 18px;cursor:pointer;filter:drop-shadow(0 8px 18px #ff77a655);animation:bob 2s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}.hidden{display:none!important}.heart{font-size:2rem;margin:14px}.signature{font-style:italic;color:#ffb8cb}.cake{font-size:4.8rem;margin:10px}#message{min-height:4.5em}
+.float-heart{position:absolute;bottom:-50px;font-size:20px;color:#ff9cbd;opacity:.8;animation:rise 8s linear forwards}@keyframes rise{to{transform:translateY(-115vh) translateX(var(--drift)) rotate(25deg);opacity:0}}
+#burst{position:fixed;inset:0;pointer-events:none;z-index:5}
+</style></head><body><div class="glow"></div><div id="stars"></div><div class="hearts" id="hearts"></div><div id="burst"></div>
+<main>
+<section class="panel" id="intro"><div class="kicker">A little something for someone special</div><span class="gift" onclick="reveal()">🎁</span><h1>For Nafisa</h1><p>There’s a little birthday surprise waiting for you.<br>Ready to open it? 💌</p><button onclick="reveal()">Open your surprise ✨</button></section>
+<section class="panel hidden" id="letter"><div class="kicker">Today is all about you</div><div class="cake">🎂</div><h1>Happy 20th Birthday,<br>Nafisa! 💗</h1><div class="heart">♡</div>
+<p id="message"></p>
+<p>May this new chapter bring you endless reasons to smile, beautiful memories, and every bit of happiness your heart deserves.</p>
+<p>I hope you never forget how loved, valued, and special you are. I’m so grateful that we have each other, and I can’t wait for all the little moments and big memories still waiting for us.</p>
+<p class="signature">With all my love, always. ❤️</p><button onclick="wish()">Make a wish 🌙</button><p id="wish" class="hidden" style="font-style:italic;color:#ffc2d5">Close your eyes… your wish is between you and the stars. ✨</p></section>
+</main>
+<script>
+const starBox=document.getElementById('stars');for(let i=0;i<55;i++){let s=document.createElement('span');s.className='star';s.textContent=Math.random()>.5?'✦':'·';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.fontSize=(8+Math.random()*16)+'px';s.style.animationDelay=Math.random()*4+'s';starBox.appendChild(s)}
+function floatingHearts(){const box=document.getElementById('hearts');for(let i=0;i<18;i++){let h=document.createElement('span');h.className='float-heart';h.textContent=['♡','♥','✧'][Math.floor(Math.random()*3)];h.style.left=Math.random()*100+'%';h.style.animationDelay=Math.random()*5+'s';h.style.animationDuration=(6+Math.random()*5)+'s';h.style.setProperty('--drift',(Math.random()*100-50)+'px');box.appendChild(h);setTimeout(()=>h.remove(),12000)}}
+setInterval(floatingHearts,4500);
+function reveal(){document.getElementById('intro').classList.add('hidden');document.getElementById('letter').classList.remove('hidden');floatingHearts();sparkleBurst();const line="You make ordinary days feel brighter just by being in them. I hope today reminds you of how wonderful you are—and how deeply you are loved.";const el=document.getElementById('message');let i=0;el.textContent='';const timer=setInterval(()=>{el.textContent+=line.charAt(i++);if(i>=line.length)clearInterval(timer)},35)}
+function sparkleBurst(){const box=document.getElementById('burst');for(let i=0;i<90;i++){let s=document.createElement('span');s.textContent=['✦','♥','✧','·'][Math.floor(Math.random()*4)];s.style.position='absolute';s.style.left=Math.random()*100+'vw';s.style.top='-20px';s.style.color=['#ffd5e4','#ff8db5','#fff1b8'][i%3];s.style.fontSize=(12+Math.random()*18)+'px';s.style.transition='transform 3s ease,opacity 3s ease';box.appendChild(s);requestAnimationFrame(()=>{s.style.transform=`translateY(${window.innerHeight+80}px) rotate(${Math.random()*500}deg)`;s.style.opacity='0'});setTimeout(()=>s.remove(),3200)}}
+function wish(){document.getElementById('wish').classList.remove('hidden');sparkleBurst()}
+</script></body></html>
